@@ -324,6 +324,19 @@ This is used by `comint-watch-for-password-prompt'."
 ;; Mouse operation
 (global-set-key [mouse-3] 'mouse-buffer-menu)
 
+;; fullscreen
+(defun my-fullscreen ()
+(interactive)
+(x-send-client-message
+nil 0 nil "_NET_WM_STATE" 32
+'(2 "_NET_WM_STATE_FULLSCREEN" 0)))
+
+;; menu-bar-mode
+(setq default-frame-alist
+      '((height . 40) (width . 90) (menu-bar-lines . 20) (tool-bar-lines . 0)))
+
+(global-set-key [(f1)] 'my-fullscreen)
+
 ;; Common MSWIN like keys
 ;; (global-set-key "\C-o" 'find-file)
 (global-set-key "\C-s" 'save-buffer)
@@ -348,6 +361,7 @@ This is used by `comint-watch-for-password-prompt'."
 
 (prefer-coding-system 'gb18030)
 (prefer-coding-system 'utf-8)
+(setq locale-coding-system 'utf-8)
 
 (setq default-process-coding-system 'euc-cn)
 (setq-default pathname-coding-system 'euc-cn)
@@ -563,3 +577,10 @@ This is used by `comint-watch-for-password-prompt'."
 ;;    (let ((browse-url-browser-function 'browse-url-firefox))
 ;;      (browse-url url)))
 ;; (setq flymd-browser-open-function 'my-flymd-browser-function)
+
+;; =================================================================
+;; leetcode
+;; =================================================================
+(add-to-list 'load-path "~/.emacs.d/plugins/leetcode")
+(require 'leetcode)
+(setq url-debug t)
