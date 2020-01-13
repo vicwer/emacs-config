@@ -584,3 +584,13 @@ nil 0 nil "_NET_WM_STATE" 32
 (add-to-list 'load-path "~/.emacs.d/plugins/leetcode")
 (require 'leetcode)
 (setq url-debug t)
+
+;; =================================================================
+;; CMakelist
+;; =================================================================
+(setq load-path (cons (expand-file-name "~/.emacs.d/plugins/cmake") load-path))
+(require 'cmake-mode)
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+                ("\\.cmake\\'" . cmake-mode))
+              auto-mode-alist))
